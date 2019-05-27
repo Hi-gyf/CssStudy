@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+        <title>1111</title>
+        <style type="text/css">
+            html,body{
+                margin: 0;
+                padding: 0; 
+            }
+            @-webkit-keyframes cube-rotate{
+                from{-webkit-transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg);}
+                to{-webkit-transform: rotateY(360deg) rotateX(360deg) rotateZ(360deg);}
+            }
+            .container{
+                width: 400px;
+                height: 400px;
+                border: 1px solid gray;
+                position: absolute;
+                top:200px;
+                left: 500px; 
+                -webkit-perspective:1200px; /*设置在旋转体的父元素上，元素距离视图的距离*/
+                -webkit-perspective-origin: 50% 50%;/*设置在父元素，查看子元素底部的角度（x,y）*/
+            }
+            .cube{
+                width: 300px;
+                height: 300px;
+                position: absolute;
+                -webkit-transform-style: preserve-3d;/*以三维呈现*/
+                -webkit-transform-origin:center center 150px; /*定义旋转中心，（x,y,z）=(中，中，向后150px)*/
+                animation: cube-rotate 5s linear infinite; /*使用动画*/
+            }
+            .surface{
+                width: 300px;
+                height: 300px;
+                position: absolute;
+                opacity: 0.9;
+            }
+            .front{
+                background: slateblue;
+                /*不需要偏移和旋转*/
+            }
+            .right{
+                background: pink;
+                -webkit-transform: translateX(300px) rotateY(-90deg);/*先向右移动300px，再以Y轴为中心旋转90度*/
+                -webkit-transform-origin:left;/*改变轴的位置为最元素的最左端*/
+            }
+            .left{
+                background: blue;
+                -webkit-transform: translateX(-300px) rotateY(90deg);
+                -webkit-transform-origin:right;
+            }
+            .back{
+                background: yellow; 
+                -webkit-transform: translateZ(300px);
+            }
+            .top{
+                background: green; 
+                -webkit-transform: translateY(300px) rotateX(90deg);
+                -webkit-transform-origin:top;
+            }
+            .bottom{
+                background: red;;
+                -webkit-transform: translateY(-300px) rotateX(-90deg);
+                -webkit-transform-origin:bottom;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="container">
+            <div class="cube">
+                <div class="front surface"></div>
+                <div class="right surface"></div>
+                <div class="left surface"></div>
+                <div class="back surface"></div>
+                <div class="top surface"></div>
+                <div class="bottom surface"></div>
+            </div>
+        </div>
+    </body>
+    <script>
+    </script>
+</html>
